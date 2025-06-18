@@ -1,0 +1,28 @@
+<div class="results-container">
+    <h2>📊 Latest Match Result</h2>
+  
+    <div *ngIf="loading" class="loading-msg">⏳ Loading...</div>
+    <div *ngIf="error" class="error-msg">❌ {{ error }}</div>
+  
+    <table *ngIf="!loading && !error && latestResult" class="results-table">
+      <thead>
+        <tr>
+          <th>📄 Resume</th>
+          <th>📝 JD Title</th>
+          <th>✅ Match %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ latestResult.resumeFileName }}</td>
+          <td>{{ latestResult.jdTitle }}</td>
+          <td>{{ latestResult.matchPercentage | number: '1.0-2' }}%</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="!loading && !error && !latestResult" class="no-results-msg">
+      ℹ️ No results available.
+    </p>
+  </div>
+  

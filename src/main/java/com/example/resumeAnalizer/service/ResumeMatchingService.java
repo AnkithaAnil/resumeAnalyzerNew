@@ -44,13 +44,17 @@ public class ResumeMatchingService {
         return result;
     }
 
-    // Simple keyword match logic (can be replaced with NLP/cosine similarity later)
+    // ✅ Improved accuracy with word-level comparison
     private double calculateMatch(String resumeText, String jdText) {
+        if (resumeText == null || jdText == null) return 0.0;
+
+        Set<String> resumeWords = new HashSet<>(Arrays.asList(resumeText.toLowerCase().split("\\W+")));
         String[] jdWords = jdText.toLowerCase().split("\\W+");
-        String resumeLower = resumeText.toLowerCase();
+
+        if (jdWords.length == 0) return 0.0;
 
         long matchCount = Arrays.stream(jdWords)
-                .filter(word -> resumeLower.contains(word))
+                .filter(resumeWords::contains)
                 .distinct()
                 .count();
 

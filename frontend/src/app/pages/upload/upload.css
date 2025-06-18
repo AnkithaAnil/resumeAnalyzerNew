@@ -1,0 +1,80 @@
+/* Global dark theme */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0d1117;
+    color: #e6edf3;
+  }
+  
+  /* Centering and spacing */
+  .upload-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  
+  /* Card-style form container */
+  .upload-card {
+    background-color: #161b22;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Headers */
+  .upload-card h1,
+  .upload-card h2 {
+    margin-bottom: 1rem;
+    color: #58a6ff;
+  }
+  
+  /* Inputs & textarea */
+  .upload-card input[type="file"],
+  .upload-card input[type="text"],
+  .upload-card textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    background-color: #0d1117;
+    color: #e6edf3;
+    font-size: 1rem;
+  }
+  
+  .upload-card textarea {
+    height: 120px;
+    resize: vertical;
+  }
+  
+  /* Buttons */
+  .upload-card button {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #238636;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .upload-card button:hover {
+    background-color: #2ea043;
+  }
+  
+  /* Success message */
+  .success-msg {
+    color: #3fb950;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  

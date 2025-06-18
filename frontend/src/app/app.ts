@@ -3,11 +3,10 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true, // ✅ Required for standalone components
   imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrls: ['./app.css'] // ✅ should be `styleUrls` (plural), not `styleUrl`
+  styleUrl: './app.css'
 })
 export class App {
-  protected title = 'career-compass-frontend';
+  protected title = 'resume-analyzer';
 }

@@ -1,0 +1,63 @@
+.results-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #161b22;
+    border-radius: 12px;
+    color: #e6edf3;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  }
+  
+  .results-container h2 {
+    color: #58a6ff;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .results-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .results-table th,
+  .results-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #30363d;
+  }
+  
+  .results-table th {
+    background-color: #21262d;
+    color: #79c0ff;
+  }
+  
+  .results-table td {
+    background-color: #0d1117;
+  }
+  
+  .loading-msg,
+  .error-msg,
+  .no-results-msg {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .loading-msg {
+    color: #f0f6fc;
+  }
+  
+  .error-msg {
+    color: #f85149;
+    font-weight: bold;
+  }
+  
+  .no-results-msg {
+    color: #8b949e;
+  }
+  

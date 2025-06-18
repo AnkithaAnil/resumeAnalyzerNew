@@ -1,0 +1,14 @@
+<div class="upload-wrapper">
+  <div class="upload-card">
+    <h1>📄 Upload Your Resume</h1>
+    <input type="file" (change)="onFileSelected($event)" />
+    <button (click)="onUpload()">Upload Resume</button>
+    <p *ngIf="uploadSuccess" class="success-msg">✅ Resume uploaded successfully!</p>
+
+    <h2>📝 Enter Job Description</h2>
+    <input type="text" placeholder="Job Title" [(ngModel)]="jobTitle" />
+    <textarea placeholder="Job Description" [(ngModel)]="jobContent"></textarea>
+    <button (click)="onUploadJD()">Upload JD</button>
+    <p *ngIf="jdUploadSuccess" class="success-msg">✅ JD uploaded successfully!</p>
+  </div>
+</div>
