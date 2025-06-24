@@ -18,6 +18,8 @@ public class ResumeMatchController {
 
     @GetMapping("/results")
     public ResponseEntity<List<ResumeMatchResponseDto>> getMatchResults() {
-        return ResponseEntity.ok(matchingService.matchResumesWithJDs());
+        // ✅ This will now include missingSkills if your service layer populates it
+        List<ResumeMatchResponseDto> results = matchingService.matchResumesWithJDs();
+        return ResponseEntity.ok(results);
     }
 }

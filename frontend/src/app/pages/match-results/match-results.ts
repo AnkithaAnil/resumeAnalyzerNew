@@ -6,7 +6,11 @@ interface MatchResult {
   resumeFileName: string;
   jdTitle: string;
   matchPercentage: number;
+  missingSkills: string[];
+  matchedSkills: string[];
 }
+
+
 
 @Component({
   selector: 'app-match-results',
@@ -33,6 +37,7 @@ export class MatchResults implements OnInit {
         this.error = 'Failed to load match results.';
         this.loading = false;
       }
+      
     });
   }
 }

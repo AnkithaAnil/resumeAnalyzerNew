@@ -1,5 +1,7 @@
 package com.example.resumeAnalizer.dto;
 
+import java.util.List;
+
 public class ResumeMatchResponseDto {
 
     private String resumeFileName;
@@ -7,6 +9,18 @@ public class ResumeMatchResponseDto {
     private double matchPercentage;
     private String jdContent;
     private String resumeSnippet;
+    private List<String> missingSkills; // ✅ New field
+    private List<String> matchedSkills;
+
+// Getter and Setter
+public List<String> getMatchedSkills() {
+    return matchedSkills;
+}
+
+public void setMatchedSkills(List<String> matchedSkills) {
+    this.matchedSkills = matchedSkills;
+}
+
 
     // Getter and Setter for resumeFileName
     public String getResumeFileName() {
@@ -51,5 +65,14 @@ public class ResumeMatchResponseDto {
 
     public void setResumeSnippet(String resumeSnippet) {
         this.resumeSnippet = resumeSnippet;
+    }
+
+    // ✅ Getter and Setter for missingSkills
+    public List<String> getMissingSkills() {
+        return missingSkills;
+    }
+
+    public void setMissingSkills(List<String> missingSkills) {
+        this.missingSkills = missingSkills;
     }
 }
