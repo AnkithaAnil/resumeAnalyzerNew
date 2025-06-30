@@ -18,18 +18,21 @@ export class RegisterComponent {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  register() {
-    this.http.post('http://localhost:8080/api/auth/register', {
-      email: this.email,
-      password: this.password
-    }).subscribe({
-      next: () => {
-        alert('Registration successful');
-        this.router.navigate(['/login']);
-      },
-      error: err => {
-        this.error = 'Email already registered';
-      }
-    });
-  }
+ register() {
+  this.http.post('http://localhost:8080/api/auth/register', {
+    email: this.email,
+    password: this.password
+  }, { responseType: 'text' }).subscribe({
+    next: (res: string) => {
+      alert(res); // shows "Registration successful"
+      this.router.navigate(['/login']);
+    },
+    error: err => {
+      console.error('Error during registration:', err);
+      this.error = err?.error || 'Registration failed';
+    }
+  });
+}
+
+
 }

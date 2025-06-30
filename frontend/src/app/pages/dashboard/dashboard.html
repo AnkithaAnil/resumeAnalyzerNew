@@ -1,0 +1,22 @@
+<div class="dashboard-container">
+  <div class="dashboard-box">
+    <h2 class="dashboard-title">📊 Match History</h2>
+
+    <table class="match-table">
+      <thead>
+        <tr>
+          <th>📝 Resume</th>
+          <th>📄 JD Title</th>
+          <th>✅ Match %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of history">
+          <td>{{ item.resumeFileName }}</td>
+          <td>{{ item.jdTitle }}</td>
+          <td>{{ item.matchPercentage }}%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

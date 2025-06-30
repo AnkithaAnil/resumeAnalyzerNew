@@ -1,7 +1,11 @@
 package com.example.resumeAnalizer.controller;
 
+import com.example.resumeAnalizer.dto.UserDto;
 import com.example.resumeAnalizer.model.User;
 import com.example.resumeAnalizer.repository.UserRepository;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,31 +23,35 @@ public class AuthController {
 
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-   @PostMapping("/login")
+@PostMapping("/login")
 public ResponseEntity<?> login(@RequestBody User user) {
     String email = user.getEmail().trim();
     String password = user.getPassword().trim();
-    
-    Optional<User> existingUser = userRepository.findByEmailAndPassword(email, password);
-    
-    if (existingUser.isPresent()) {
-        return ResponseEntity.ok("Login successful");
-    } else {
 
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+    Optional<User> existingUser = userRepository.findByEmailIgnoreCase(email);
+
+    if (existingUser.isPresent()) {
+        User dbUser = existingUser.get();
+        if (passwordEncoder.matches(password, dbUser.getPassword())) {
+            UserDto dto = new UserDto(dbUser.getId(), dbUser.getEmail());
+            return ResponseEntity.ok(dto); // ✅ Return only ID and Email
+        }
     }
+
+    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
 }
 
-
     // ✅ REGISTRATION
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody User user) {
-        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email already registered");
-        }
-
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-        return ResponseEntity.ok("Registration successful");
+@PostMapping("/register")
+public ResponseEntity<?> register(@Valid @RequestBody User user) {
+    if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+        return ResponseEntity
+               .status(HttpStatus.BAD_REQUEST)
+               .body("Email already registered");
     }
+
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
+    userRepository.save(user);
+    return ResponseEntity.ok("Registration successful");
+}
 }

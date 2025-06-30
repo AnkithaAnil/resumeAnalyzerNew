@@ -20,19 +20,18 @@ export class Login {
   constructor(private http: HttpClient, private router: Router) {}
 
   login() {
-    this.http.post('http://localhost:8080/api/auth/login', {
-      email: this.email,
-      password: this.password,
-    }).subscribe({
-      next: () => {
-        localStorage.setItem('loggedIn', 'true');
-        this.router.navigate(['/results']);
-      },
-      error: () => {
-        console.log('Trying login with:', this.email, this.password);
-
-        this.error = 'Invalid email or password';
-      }
-    });
-  }
+  this.http.post('http://localhost:8080/api/auth/login', {
+    email: this.email,
+    password: this.password
+  }).subscribe({
+    next: (res: any) => {
+      localStorage.setItem('loggedIn', 'true');
+      localStorage.setItem('user', JSON.stringify(res)); // Save user ID and email
+      this.router.navigate(['/home']);
+    },
+    error: () => {
+      this.error = 'Invalid email or password';
+    }
+  });
+}
 }

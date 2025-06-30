@@ -1,3 +1,4 @@
+<!-- Existing UI for results -->
 <div class="results-container">
   <h2>📊 Latest Match Result</h2>
 
@@ -21,7 +22,7 @@
     </tbody>
   </table>
 
-  <!-- 🧠 Skills Comparison -->
+  <!-- Skills Section -->
   <div *ngIf="latestResult" class="skills-section">
     <div class="skills-column">
       <h3>✔️ Matched Skills</h3>
@@ -42,6 +43,19 @@
     </div>
   </div>
 
+  <!-- ✅ Save Button -->
+  <div style="margin-top: 16px; text-align: center;">
+    <button *ngIf="latestResult" (click)="saveHistory()" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">
+      💾 Save Result
+    </button>
+  </div>
+  <div>
+   <button (click)="downloadResult()" style="padding: 8px 16px; background-color: #2196F3; color: white; border: none; border-radius: 5px;">
+    ⬇️ Download Result
+    </button>
+  </div>
+
+  <!-- No result message -->
   <p *ngIf="!loading && !error && !latestResult" class="no-results-msg">
     ℹ️ No results available.
   </p>
