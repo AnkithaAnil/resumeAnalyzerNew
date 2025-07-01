@@ -54,7 +54,9 @@
     ⬇️ Download Result
     </button>
   </div>
-
+  <button (click)="downloadEditedResume()" class="download-btn">
+  Download Edited Resume
+</button>
   <!-- No result message -->
   <p *ngIf="!loading && !error && !latestResult" class="no-results-msg">
     ℹ️ No results available.

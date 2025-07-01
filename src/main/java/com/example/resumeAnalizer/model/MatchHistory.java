@@ -1,6 +1,7 @@
 package com.example.resumeAnalizer.model;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class MatchHistory {
@@ -15,9 +16,23 @@ public class MatchHistory {
 
     @ManyToOne
     private User user;
-     public MatchHistory() {} // default constructor required by JPA
 
-    // ✅ Add this constructor
+    @ElementCollection
+    private List<String> missingSkills;
+
+    // ✅ Default constructor required by JPA
+    public MatchHistory() {}
+
+    // ✅ Constructor with missingSkills
+    public MatchHistory(String resumeFileName, String jdTitle, double matchPercentage, User user, List<String> missingSkills) {
+        this.resumeFileName = resumeFileName;
+        this.jdTitle = jdTitle;
+        this.matchPercentage = matchPercentage;
+        this.user = user;
+        this.missingSkills = missingSkills;
+    }
+
+    // ✅ Constructor without missingSkills (optional use)
     public MatchHistory(String resumeFileName, String jdTitle, double matchPercentage, User user) {
         this.resumeFileName = resumeFileName;
         this.jdTitle = jdTitle;
@@ -25,8 +40,8 @@ public class MatchHistory {
         this.user = user;
     }
 
-
     // Getters and Setters
+
     public Long getId() {
         return id;
     }
@@ -65,5 +80,13 @@ public class MatchHistory {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<String> getMissingSkills() {
+        return missingSkills;
+    }
+
+    public void setMissingSkills(List<String> missingSkills) {
+        this.missingSkills = missingSkills;
     }
 }

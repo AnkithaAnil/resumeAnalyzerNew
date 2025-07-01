@@ -1,11 +1,23 @@
 package com.example.resumeAnalizer.dto;
 
+import java.util.List;
+
 public class MatchHistoryRequest {
 
     private String resumeFileName;
     private String jdTitle;
     private double matchPercentage;
     private String userEmail;
+    private List<String> missingSkills;
+
+public List<String> getMissingSkills() {
+    return missingSkills;
+}
+
+public void setMissingSkills(List<String> missingSkills) {
+    this.missingSkills = missingSkills;
+}
+
 
     // Getters and Setters
     public String getResumeFileName() {

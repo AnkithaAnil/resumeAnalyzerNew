@@ -39,14 +39,16 @@ public class MatchHistoryController {
     }
 
     // ✅ SAVE history using request body (resume + jd + match + email)
-    @PostMapping("/save")
-    public ResponseEntity<MatchHistory> saveHistory(@RequestBody MatchHistoryRequest request) {
-        MatchHistory saved = matchHistoryService.saveMatchHistory(
-                request.getResumeFileName(),
-                request.getJdTitle(),
-                request.getMatchPercentage(),
-                request.getUserEmail()
-        );
-        return ResponseEntity.ok(saved);
-    }
+  @PostMapping("/save")
+public ResponseEntity<MatchHistory> saveHistory(@RequestBody MatchHistoryRequest request) {
+    MatchHistory saved = matchHistoryService.saveMatchHistory(
+            request.getResumeFileName(),
+            request.getJdTitle(),
+            request.getMatchPercentage(),
+            request.getMissingSkills(), // ✅ Add this
+            request.getUserEmail()
+    );
+    return ResponseEntity.ok(saved);
+}
+
 }
